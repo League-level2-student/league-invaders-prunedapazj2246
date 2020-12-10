@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
- Rocketship ship = new Rocketship(250,700,50,50);
+ Rocketship ship = new Rocketship(250,750,50,50);
 	Timer frameDraw = new Timer(1000/60,this);
 		Font titleFont = new Font("Arial",Font.PLAIN, 48);
 		Font directionFont = new Font("Arial", Font.PLAIN, 25);
@@ -105,20 +105,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 		    System.out.println("DOWN");
 		    ship.down();
-		   if(ship.y>=800) {
-		    ship.y=800;
+		   if(ship.y>=750) {
+		    ship.y=750;
 		   }
 		}
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
 		    System.out.println("RIGHT");
 		    ship.right();
-		    if(ship.y<=0 ) {
-			    ship.y=0;
+		    if(ship.x>=450 ) {
+			    ship.x=450;
 			    }
 		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 		    System.out.println("LEFT");
 		    ship.left();
+		    if(ship.x<=0 ) {
+			    ship.x=0;
+			    }
 		}
 	}
 	@Override
