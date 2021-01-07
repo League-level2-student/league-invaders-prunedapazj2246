@@ -16,6 +16,7 @@ public static void main(String[] args) {
 public LeagueInvaders(){
 	this.frame=new JFrame();
 this.gP=new GamePanel();
+
 }
 public void setup() {
 	//gP.setPreferredSize(d);
