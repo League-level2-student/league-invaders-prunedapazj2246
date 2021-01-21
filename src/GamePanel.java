@@ -16,14 +16,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
 	
-	Projectile p = new Projectile();
+	//Projectile p = new Projectile(x+width/2, y, 10, 10);
 	
 	Rocketship ship = new Rocketship(250,750,50,50);
 	
  ObjectManager oB=new ObjectManager(ship);
 	
  Timer frameDraw = new Timer(1000/60,this);
-	Timer alienSpawn;
+	Timer alienSpawn= new Timer(1000 ,oB);
  
 	Font titleFont = new Font("Arial",Font.PLAIN, 48);
 		Font directionFont = new Font("Arial", Font.PLAIN, 25);
@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     }
     
     public void startGame(){
-        alienSpawn = new Timer(1000 ,oB);
+        
         alienSpawn.start();
     }
 	@Override
@@ -122,7 +122,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}else if(currentState == END){
 		    updateEndState();
 		}	
-		System.out.println("action");
+		//System.out.println("action");
 		repaint();
 	}
 	@Override
@@ -171,7 +171,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			alienSpawn.stop();
 		}
 		if(currentState==GAME&& e.getKeyCode()==KeyEvent.VK_SPACE) {
-			oB.addProjectile();
+			oB.addProjectile(ship.getProjectile());
 			
 		}
 	}

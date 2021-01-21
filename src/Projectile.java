@@ -19,6 +19,7 @@ public class Projectile extends GameObject{
 	
 public void update() {
 	y-=speed;
+	super.update();
 }
 public void draw(Graphics g) {
 	g.setColor(Color.RED);
@@ -42,7 +43,5 @@ void loadImage(String imageFile) {
         needImage = false;
     }
 }
-public Projectile getProjectile() {
-    return new Projectile(x+width/2, y, 10, 10);
-} 
+
 }

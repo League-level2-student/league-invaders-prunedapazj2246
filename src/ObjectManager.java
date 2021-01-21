@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ ArrayList<Projectile> projectiles= new ArrayList<Projectile>();
 ArrayList<Alien>aliens=new ArrayList<Alien>();
 
 Random random = new Random();
+
+
 
 public ObjectManager(Rocketship ship2) {
 	this.ship2=ship2;
@@ -60,10 +63,25 @@ if(projectiles.get(i).isActive==false) {
 }
 }
 }
-
+public void checkCollision() {
+	for (int i = 0; i < aliens.size(); i++) {
+		Alien j = aliens.get(i);
+		if(ship2.collisionBox.intersects(aliens.collisonBox)) {
+		j.isActive=false;
+		ship2.isActive=false;
+		}
+		else if(projectiles.collisionBox.intersects(aliens.collisonBox))
+			j.isActive=false;
+	
+	}
+		
+	
+	
+}
 @Override
 public void actionPerformed(ActionEvent arg0) {
 	// TODO Auto-generated method stub
+	System.out.println(arg0.getSource());
 	addAlien();
 }
 }
