@@ -20,6 +20,7 @@ public void update() {
 	super.update();
 }
 public void draw(Graphics g) {
+	  super.draw(g);
 	  
       if (gotImage) {
     		g.drawImage(image, x, y, width, height, null);

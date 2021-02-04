@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -41,12 +42,16 @@ public void addAlien() {
 		}
 	}
 	checkCollision();
+	if(ship2.isActive) {
 	purgeObjects();
+	}
 }
 
 
 public void draw(Graphics g) {
-	
+	String s = String.valueOf(score);
+	g.setColor(Color.YELLOW);
+	g.drawString("score: "+s, 50, 50);
 	ship2.draw(g);
 	for(Alien a:aliens) {
 		a.draw(g);
@@ -70,6 +75,7 @@ if(!projectiles.get(i).isActive) {
 public void checkCollision() {
 	for (int i = 0; i < aliens.size(); i++) {
 		if(ship2.collisionBox.intersects(aliens.get(i).collisionBox)) {
+			System.out.println("rocket dies");
 			aliens.get(i).isActive=false;
 			ship2.isActive=false;
 			break;

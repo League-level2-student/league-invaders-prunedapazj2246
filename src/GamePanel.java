@@ -16,7 +16,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
 	
+	
 	//Projectile p = new Projectile(x+width/2, y, 10, 10);
+	
+	
 	
 	Rocketship ship = new Rocketship(250,750,50,50);
 	
@@ -56,18 +59,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	void updateMenuState() {
 		
+	
 	}
 	void updateGameState(){
 		oB.update();
-		if(ship.isActive==false) {
+		System.out.println("update");
+		if(!ship.isActive) {
 			currentState=END;
 		}
 	}
 	void updateEndState() {
 		
 	}
-	void drawMenuState(Graphics g) {  
-		
+	void drawMenuState(Graphics g) { 
+
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 		g.setFont(titleFont);
