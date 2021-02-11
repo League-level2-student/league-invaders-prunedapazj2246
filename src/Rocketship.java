@@ -11,7 +11,7 @@ public class Rocketship extends GameObject {
 	
 	public Rocketship(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		speed=10;
+		speed=20;
 		if (needImage) {
 		    loadImage ("rocket.png");
 		}	

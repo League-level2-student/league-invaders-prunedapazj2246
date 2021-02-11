@@ -29,6 +29,7 @@ public void addAlien() {
 		
 	
 }public void update() {
+	ship2.update();
 	for(Alien a:aliens) {
 		a.update();
 		if(a.y>LeagueInvaders.HEIGHT) {
@@ -113,6 +114,7 @@ public void actionPerformed(ActionEvent arg0) {
 	// TODO Auto-generated method stub
 	//System.out.println(arg0.getSource());
 	addAlien();
+	System.out.println(aliens.size());
 }
 }
 

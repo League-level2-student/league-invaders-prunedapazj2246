@@ -63,9 +63,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	void updateGameState(){
 		oB.update();
-		System.out.println("update");
+		//System.out.println("update");
 		if(!ship.isActive) {
 			currentState=END;
+			alienSpawn.stop();
 		}
 	}
 	void updateEndState() {
@@ -137,11 +138,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+		
 		    if (currentState == END) {
 		        currentState = MENU;
+		        ship = new Rocketship(250,750,50,50);
+		        System.out.println("restart");
+		        oB=new ObjectManager(ship);
+		        alienSpawn.addActionListener(oB);
 		    } else {
 		        currentState++;
 		    }
+			if(currentState==GAME) {
+				startGame();
+				
+			}
 		}
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
 		    System.out.println("UP");
@@ -171,13 +181,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			    ship.x=0;
 			    }
 		}
-		if(currentState==GAME) {
-			startGame();
-			
-		}
-		else if(currentState==END) {
-			alienSpawn.stop();
-		}
+	
 		if(currentState==GAME&& e.getKeyCode()==KeyEvent.VK_SPACE) {
 			oB.addProjectile(ship.getProjectile());
 			
